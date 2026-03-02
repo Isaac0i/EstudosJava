@@ -1,3 +1,5 @@
+package library;
+
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -6,17 +8,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
 
-        int opcao = 0;
+        int opcao;
         String user;
         String password;
         boolean login = false;
         String book;
+        String author;
+        int year;
 
-        Map<String, Boolean> books = new HashMap<>();
-        books.put("Harry Potter", true);
-        books.put("Star Wars", true);
-        books.put("Programador Pragmatico", true);
-        books.put("Habitos Atomicos", false);
+        Map<String, Book> books = new HashMap<>();
 
         Map<String, String> users = new HashMap<>();
         users.put("admin", "1234");
@@ -50,26 +50,32 @@ public class Main {
                     if(user.equals("admin")){
                         System.out.println("Informe o livro que deseja adicionar: ");
                         book = reader.nextLine();
-                        books.put(book, true);
+                        System.out.println("Informe o nome do autor: ");
+                        author = reader.nextLine();
+                        System.out.println("Informe o ano de publicação: ");
+                        year = parseInt(reader.nextLine());
+
+                        Book book1 = new Book(book, author, year);
+                        books.put(book1.getTitle(), book1);
                         System.out.println("Livro adicionado com sucesso!");
                     } else {
                         System.out.println("Somente o Adiministrador pode adicionar livros!");
                     }
                     break;
                 case 2 :
-                    for(Map.Entry<String, Boolean> entry : books.entrySet()){
-                        System.out.println(entry.getKey() + " - " + entry.getValue());
+                    for(Map.Entry<String, Book> entry : books.entrySet()){
+                        System.out.println(entry.getValue().toString());
                     }
                     break;
                 case 3 :
                     System.out.println("Informe o livro que deseja alugar/devolver: ");
                     book = reader.nextLine();
                     if(books.containsKey(book)){
-                        if(books.get(book).equals(true)){
-                            books.put(book, false);
+                        if(books.get(book).isAvailable()){
+                            books.get(book).setAvailable(false);
                             System.out.println("Livro alugado com sucesso!");
                         }else {
-                            books.put(book, true);
+                            books.get(book).setAvailable(true);
                             System.out.println("Livro devolvido com sucesso!");
                         }
                     } else {

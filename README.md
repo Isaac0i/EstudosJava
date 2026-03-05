@@ -50,7 +50,7 @@ Este repositório também serve como registro da minha evolução na linguagem, 
 
 ---
 
-## 💡 Observação
+##💡 Observação
 
 O foco principal deste projeto é aprendizado e prática.  
 Contribuições, sugestões e feedbacks são sempre bem-vindos.

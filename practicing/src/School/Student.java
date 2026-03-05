@@ -6,7 +6,7 @@ import java.util.List;
 public class Student {
     private String name;
     private String registration;
-    private List<Integer> grades = new ArrayList<>();
+    private List<Double> grades = new ArrayList<>();
     private boolean aproved;
 
     public Student(String name, String registragion) {
@@ -38,11 +38,11 @@ public class Student {
         this.registration = registration;
     }
 
-    public List<Integer> getGrades() {
+    public List<Double> getGrades() {
         return grades;
     }
 
-    public void setGrades(List<Integer> grades) {
+    public void setGrades(List<Double> grades) {
         this.grades = grades;
     }
 

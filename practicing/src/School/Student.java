@@ -8,10 +8,28 @@ public class Student {
     private String registration;
     private List<Double> grades = new ArrayList<>();
     private boolean aproved;
+    private Double averageGrade;
+    private String stats;
 
     public Student(String name, String registragion) {
         this.name = name;
         this.registration = registragion;
+    }
+
+    public String getStats() {
+        return stats;
+    }
+
+    public void setStats(String stats) {
+        this.stats = stats;
+    }
+
+    public Double getAverageGrade() {
+        return averageGrade;
+    }
+
+    public void setAverageGrade(Double averageGrade) {
+        this.averageGrade = averageGrade;
     }
 
     public boolean isAproved() {
@@ -48,6 +66,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "[name=" + name + ", registration=" + registration + ", grades=" + grades + "]";
+        return "[name=" + name + ", registration=" + registration + ", grades=" + grades + ", averageGrade=" + averageGrade + ", stats= " + stats + "]";
     }
 }

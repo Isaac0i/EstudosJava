@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Integer option = 0;
+        int option;
 
         Map<String, Student> students = new HashMap<>();
 
@@ -34,24 +32,62 @@ public class Main {
                     System.out.println("Informe a Matricula do estudante: ");
                     String reg2 = sc.nextLine();
                     if(students.containsKey(reg2)) {
-                        System.out.println("Informe a Nota a ser lançada: ");
+                        String student2 = students.get(reg2).getName();
+                        System.out.printf("Informe a Nota a ser lançada para o(a) %s: ", student2);
                         double nota = sc.nextDouble();
                         sc.nextLine();
 
                         students.get(reg2).getGrades().add(nota);
                         System.out.println("Nota lançada com sucesso!");
-                        break;
+                    } else {
+                        System.out.println("Estudante não encontrado.");
                     }
+                    break;
+                case 3:
+                    System.out.println("Informe a Matricula do estudante: ");
+                    String reg3 = sc.nextLine();
+                    if(students.containsKey(reg3)) {
+                        Student student = students.get(reg3);
+                        Double media = calculateAverage(student);
+                        String stats = setStats(media);
+                        student.setStats(stats);
+                        student.setAverageGrade(media);
+
+                            System.out.println(student);
+                    } else {
+                        System.out.println("Estudante não encontrado.");
+                    }
+                    break;
+                case 4:
+                    for(Student student : students.values()) {
+                        Double media = calculateAverage(student);
+                        String stats = setStats(media);
+                        student.setStats(stats);
+                        student.setAverageGrade(media);
+
+                        System.out.println("Name: " + student.getName() +" - Matricula: "+ student.getRegistration() +" - Média: "+ student.getStats());
+                    }
+                    break;
+                case 5:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção invalida!");
+                    break;
             }
         } while (option != 5);
     }
 
-    public double calculateAverage(Student student) {
+    public static double calculateAverage(Student student) {
         double notas = 0;
         for (int i = 0; i < student.getGrades().size(); i++) {
             notas += student.getGrades().get(i);
         }
         return notas / (student.getGrades().size());
+    }
+
+    public static String setStats(Double media) {
+       return  (media >= 6) ? "Aprovado" : "Reprovado";
     }
 }
 

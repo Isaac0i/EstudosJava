@@ -12,8 +12,7 @@ Aqui você encontrará implementações relacionadas a:
 
 - ✅ Lógica de programação  
 - ✅ Programação Orientada a Objetos (POO)  
-- ✅ Estruturas de dados e Collections (`List`, `Set`, `Map`)  
-- ✅ Manipulação de datas e horários  
+- ✅ Estruturas de dados e Collections (`List`, `Set`, `Map`)   
 - ✅ Validações e regras de negócio  
 - ✅ Estruturação e organização de código  
 - ✅ Simulações de pequenos sistemas  

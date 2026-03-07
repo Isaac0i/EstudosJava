@@ -13,7 +13,7 @@ public class Main {
         Map<Integer, Account> accounts = new HashMap<>();
         int option;
 
-        System.out.println("\"Welcome to Bank Account!");
+        System.out.println("Welcome to Bank Account!");
         do {
             System.out.println("Chose your option: \n1.Create a Account\n2.Check Balance\n3.Deposit / Withdraw\n4.Transfer Money\n5.List Clients\n6.Exit");
             option = parseInt(sc.nextLine());
@@ -34,7 +34,7 @@ public class Main {
                     Integer acNumber = parseInt(sc.nextLine());
                     if (accounts.containsKey(acNumber)) {
                         Account ac = accounts.get(acNumber);
-                        ac.getBalance();
+                        ac.showBalance();
                     } else {
                         System.out.println("Accont does not exist!");
                     }
@@ -50,6 +50,7 @@ public class Main {
                             System.out.println("Enter the deposit amount: ");
                             ac.deposit(parseDouble(sc.nextLine()));
                             System.out.println("Deposited Successfully!");
+                            break;
                         } else {
                             System.out.println("Enter the withdrawal amount: ");
                             ac.withdraw(parseDouble(sc.nextLine()));
@@ -73,6 +74,22 @@ public class Main {
                             System.out.println("Destiny account does not exist!");
                         }
                     }
+                    break;
+                case 5:
+                    System.out.println("List Clients:");
+                    Double soma = 0d;
+                    for (Map.Entry<Integer, Account> entry : accounts.entrySet()) {
+                        System.out.println(entry.getValue().getHolder());
+                        soma += entry.getValue().getBalance();
+                    }
+                    System.out.println("Full amount: " + soma);
+                    break;
+                case 6:
+                    System.out.println("Turning off...");
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+                    break;
             }
         } while (option != 6);
 

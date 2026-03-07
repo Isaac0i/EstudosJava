@@ -6,9 +6,16 @@ public class Account {
     private Double balance;
     private String holder;
 
+    public String getHolder() {
+        return holder;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
 
     public Account(Double balance, String holder) {
-        if(!(balance == 0)){ this.balance = balance;} else {this.balance = 0.0;}
+        this.balance = (balance != null) ? balance : 0.0;
         this.holder = holder;
         this.accountNumber = ++counter;
     }
@@ -17,7 +24,7 @@ public class Account {
         return accountNumber;
     }
 
-    public void getBalance() {
+    public void showBalance() {
         System.out.println("Holder: " + this.holder + " \nBalance: " + this.balance);
     }
 
@@ -39,8 +46,6 @@ public class Account {
         if(this.withdraw(amount)){
             account.deposit(amount);
             System.out.println("Transfer successful!");
-        } else {
-            System.out.println("Insufficient funds!");
         }
     }
 

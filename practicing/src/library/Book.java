@@ -2,8 +2,8 @@ package library;
 
 public class Book {
     private String title;
-    private String author;
-    private Integer year;
+    private String autho;
+    private Integer lauchYear;
     private boolean available;
 
     public Book(String title, String author, Integer year) {

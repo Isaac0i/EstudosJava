@@ -3,7 +3,7 @@ package library;
 public class Book {
     private String title;
     private String autho;
-    private Integer lauchYear;
+    private Integer year;
     private boolean available;
 
     public Book(String title, String author, Integer year) {

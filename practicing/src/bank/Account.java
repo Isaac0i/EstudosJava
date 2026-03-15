@@ -1,9 +1,9 @@
 package bank;
 
 public class Account {
-    private static int counter = 0;
-    private Integer accountNumber;
-    private Double balance;
+    protected static int counter = 0;
+    protected Integer accountNumber;
+    protected Double balance;
     private String holder;
 
     public String getHolder() {

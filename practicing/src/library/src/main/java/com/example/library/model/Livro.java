@@ -1,11 +1,20 @@
 package com.example.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull; // <- O import correto é este!
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "livros")
 public class Livro {
@@ -21,17 +30,9 @@ public class Livro {
     @Positive(message = "O preço deve ser maior que zero")
     private double price;
 
-    public Livro() {}
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    @JsonIgnoreProperties("livros")
+    private Autor autor;
 
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
-
-    public String getTitulo() {return titulo;}
-
-    public void setTitulo(String titulo) {this.titulo = titulo;}
-
-    public double getPrice() {return price;}
-
-    public void setPrice(double price) {this.price = price;}
 }

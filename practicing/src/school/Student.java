@@ -61,7 +61,7 @@ public class Student {
     }
 
     public void setGrades(List<Double> grades) {
-        this.grades = grades;
+        this.grades = grades ;
     }
 
     @Override

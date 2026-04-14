@@ -9,7 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="library" />
       </profile>
-      <profile name="Annotation profile for school" enabled="true">
+      <profile name="Annotation profile for bank" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -17,12 +17,14 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.44/lombok-1.18.44.jar" />
         </processorPath>
         <module name="school" />
+        <module name="bank" />
         <module name="parkinglot" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bank" options="-parameters" />
       <module name="library" options="-parameters" />
       <module name="parkinglot" options="-parameters" />
       <module name="school" options="-parameters" />
